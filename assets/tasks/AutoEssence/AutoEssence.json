@@ -1040,14 +1040,7 @@
                     "pipeline_type": "int",
                     "verify": "^[1-9]\\d*$"
                 }
-            ],
-            "pipeline_override": {
-                "CombatProtocolMain": {
-                    "attach": {
-                        "threshold_auto_essence": "{AutoEssenceCycleThresholdValue}"
-                    }
-                }
-            }
+            ]
         }
     }
 }

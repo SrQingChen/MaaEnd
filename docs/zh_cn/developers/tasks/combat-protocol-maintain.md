@@ -74,6 +74,6 @@
 ## 扩展新的作战任务
 
 1. 在 `agent/go-service/combatprotocol/` 中登记任务标识（`state.go` 的常量与 `taskLabelKey`、`options.go` 的默认阈值）。
-2. 在该任务的任务定义中提供「循环作战协议阈值」输入选项（MXU 从条目选项值读取并写入 `slot_thresholds`；选项自带的 `attach` 覆写仅作后备）。
+2. 在该任务的任务定义中提供「循环作战协议阈值」输入选项（MXU 从条目选项值读取并写入 `slot_thresholds`；未装配槽位表时容器回退到内置默认顺序与默认阈值 480 / 240）。
 3. 在 `assets/tasks/CombatProtocol.json` 中按上面的接入点表为其流程添加覆写，并在 `assets/resource/pipeline/CombatProtocol.json` 中补充对应分支节点（进入主流程、累计、继续、消耗券标记）。
 4. 同步 `tools/schema/` 中 `CombatProtocolAccumulate` / `CombatProtocolState` 的 `task` / `expect` 取值枚举与五语言文案。

@@ -74,6 +74,6 @@ After the accumulator, `CombatProtocolStopAfterRotation` (recognition `expect: "
 ## Adding a New Combat Task
 
 1. Register the task identifier in `agent/go-service/combatprotocol/` (the constants and `taskLabelKey` in `state.go`, the default threshold in `options.go`).
-2. Provide a "Cycle threshold" input option in the task's own definition (MXU reads the entry's option value and writes it into `slot_thresholds`; the option's own `attach` override is a fallback only).
+2. Provide a "Cycle threshold" input option in the task's own definition (MXU reads the entry's option value and writes it into `slot_thresholds`; without an assembled slot table the container falls back to the built-in default order and thresholds 480 / 240).
 3. Hook its flow according to the override table above in `assets/tasks/CombatProtocol.json`, and add the corresponding branch nodes in `assets/resource/pipeline/CombatProtocol.json` (enter the main flow, accumulate, continue, coupon marking).
 4. Update the `task` / `expect` enums in `tools/schema/` for `CombatProtocolAccumulate` / `CombatProtocolState` and the five-language texts.

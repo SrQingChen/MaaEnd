@@ -87,6 +87,10 @@ func (a *AccumulateAction) Run(ctx *maa.Context, arg *maa.CustomActionArg) bool 
 				Err(err).
 				Str("component", "CombatProtocolAccumulate").
 				Msg("failed to save rotation state")
+			stateMu.Unlock()
+			// 累计没有落盘时后续节点仍按文件内容判断是否达标，继续按成功返回会让
+			// 当前槽位反复从头累计、轮换停住；回报失败让本次运行走失败路径。
+			return false
 		}
 	}
 	stateMu.Unlock()
